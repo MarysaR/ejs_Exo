@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendrier des Événements</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+    <%- include('partials/header') %>
+
+    <main>
+        <ul>
+            <% evenements.forEach(evenement => { %>
+                <li class="<%= evenement.statut %>">
+                    <h2><%= evenement.titre %></h2>
+                    <p><strong>Date :</strong> <%= evenement.date %></p>
+                    <p><%= evenement.description %></p>
+                    <% if (evenement.statut === 'actif') { %>
+                        <span class="active">Actif</span>
+                    <% } else { %>
+                        <span class="inactive">Inactif</span>
+                    <% } %>
+                </li>
+            <% }); %>
+        </ul>
+    </main>
+
+    <%- include('partials/footer') %>
+
+</body>
+</html>
